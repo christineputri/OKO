@@ -33,10 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerPageButton);
         continueWithGoogleButton = findViewById(R.id.buttonGoogle);
 
-        // Dummy data for demonstration purposes
-        userList.add(new User("christine@email.com", "chr1"));
-        userList.add(new User("tin@email.com", "chr2"));
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
         continueWithGoogleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Directly go to MainActivity for Google login
-                startActivity(MainActivity.class);
+                // Directly go to SubscriptionActivity for Google login
+                startActivity(SubscriptionActivity.class);
             }
         });
     }
@@ -69,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 // Successful login
                 Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                // Redirect to MainActivity
-                startActivity(MainActivity.class);
+                // Redirect to SubscriptionActivity
+                startActivity(SubscriptionActivity.class);
                 return;
             }
         }
