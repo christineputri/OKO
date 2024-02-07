@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/bottom_mounted_card"
+        android:background="@drawable/bottom_mounted"
         android:orientation="vertical"
         android:padding="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -115,7 +115,7 @@
             android:text="Register"
             android:textColor="@color/white"
             android:textSize="18dp"
-            app:backgroundTint="@color/red_300"
+            app:backgroundTint="@color/purple_500"
             tools:ignore="MissingConstraints" />
 
 
@@ -147,7 +147,7 @@
             android:text="Continue with Google"
             android:textColor="@color/white"
             android:textSize="15dp"
-            app:backgroundTint="@color/red_300"
+            app:backgroundTint="@color/purple_500"
             app:startIconDrawable="@drawable/img_google" />
 
         <LinearLayout
@@ -177,7 +177,6 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/form_field2"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/latobold"
                 android:text="LOGIN"
