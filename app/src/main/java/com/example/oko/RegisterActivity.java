@@ -1,92 +1,98 @@
 package com.example.oko;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.oko.model.User;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    EditText firstNameEt, lastNameEt, emailEt, passwordEt, confirmPassEt;
-    Button loginBtn, regisBtn;
+    private EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
+    private Button registerButton, continueWithGoogleButton, loginButton;
 
-    @SuppressLint("MissingInflatedId")
+    // ArrayList to store user data
+    private List<User> userList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        firstNameEt = findViewById(R.id.ETFirstName);
-        lastNameEt = findViewById(R.id.ETLastName);
-        emailEt = findViewById(R.id.emailFormField);
-        passwordEt = findViewById(R.id.passwordFormField);
-        confirmPassEt = findViewById(R.id.ConfirmPasswordFormField);
+        firstNameEditText = findViewById(R.id.ETFirstName);
+        lastNameEditText = findViewById(R.id.ETLastName);
+        emailEditText = findViewById(R.id.emailFormField);
+        passwordEditText = findViewById(R.id.passwordFormField);
+        confirmPasswordEditText = findViewById(R.id.ConfirmPasswordFormField);
+        registerButton = findViewById(R.id.registerButton);
+        continueWithGoogleButton = findViewById(R.id.buttonGoogle);
+        loginButton = findViewById(R.id.loginButton);
 
-        regisBtn = findViewById(R.id.registerButton);
-        loginBtn = findViewById(R.id.loginButton);
-
-
-        regisBtn.setOnClickListener(e->{
-            String firstName = firstNameEt.getText().toString();
-            String lastName = lastNameEt.getText().toString();
-            String email = emailEt.getText().toString();
-            String password = passwordEt.getText().toString();
-            registerUser(firstName, lastName, email, password);
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registerUser();
+            }
         });
 
-        loginBtn.setOnClickListener(e->{
-            onLoginClick();
+        continueWithGoogleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Directly go to MainActivity for Google login
+                startActivity(MainActivity.class);
+            }
         });
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Redirect to LoginActivity
+                startActivity(LoginActivity.class);
+            }
+        });
     }
 
-    public void onHomeClick() {
-        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-        startActivity(intent);
-        finish();
+    private void registerUser() {
+        String firstName = firstNameEditText.getText().toString();
+        String lastName = lastNameEditText.getText().toString();
+        String email = emailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+        String confirmPassword = confirmPasswordEditText.getText().toString();
+
+        if (!password.equals(confirmPassword)) {
+            // Passwords do not match, show error message
+            Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if the email is already registered
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                // Email already exists, show error message
+                Toast.makeText(RegisterActivity.this, "Email is already registered", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
+        // Add the new user to the list
+        userList.add(new User(firstName, lastName, email, password));
+
+        // Display success message
+        Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+
+        // Redirect to MainActivity after registration
+        startActivity(MainActivity.class);
     }
 
-    public void onLoginClick() {
-        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    public void registerUser(String firstName, String lastName, String email, String password){
-
-        User user = new User(firstName, lastName, email, password);
-        db.collection("users").add(user)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.e("Oko", "DocumentSnapshot added with ID: " + documentReference.getId());
-                        String id = documentReference.getId();
-                        user.setId(id);
-                        SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("UserID", user.getId());
-                        editor.apply();
-                        onHomeClick();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e("Skinmates", "Error adding document", e);
-                    }
-                });
+    private void startActivity(Class<?> cls) {
+        startActivity(new Intent(RegisterActivity.this, cls));
     }
 }

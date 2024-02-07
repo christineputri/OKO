@@ -1,99 +1,85 @@
 package com.example.oko;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.oko.model.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    EditText emailEt, passwordEt;
-    Button loginBtn, regisBtn;
-    ArrayList<User>userArrayList = new ArrayList<>();
+    private EditText emailEditText, passwordEditText;
+    private Button loginButton, registerButton, continueWithGoogleButton;
+
+    // ArrayList to store email and password pairs
+    private List<User> userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        emailEt = findViewById(R.id.emailFormField);
-        passwordEt = findViewById(R.id.passwordFormField);
+        emailEditText = findViewById(R.id.emailFormField);
+        passwordEditText = findViewById(R.id.passwordFormField);
+        loginButton = findViewById(R.id.loginButton);
+        registerButton = findViewById(R.id.registerPageButton);
+        continueWithGoogleButton = findViewById(R.id.buttonGoogle);
 
-        regisBtn = findViewById(R.id.registerPageButton);
-        loginBtn = findViewById(R.id.loginButton);
+        // Dummy data for demonstration purposes
+        userList.add(new User("christine@email.com", "chr1"));
+        userList.add(new User("tin@email.com", "chr2"));
 
-        loginBtn.setOnClickListener(e->{
-            String email = emailEt.getText().toString();
-            String password = passwordEt.getText().toString();
-            getUserByEmail(email, password, userArrayList);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                loginUser();
+            }
         });
 
-        regisBtn.setOnClickListener(e->{
-            onRegisterClick();
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Redirect to RegisterActivity
+                startActivity(RegisterActivity.class);
+            }
         });
 
+        continueWithGoogleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Directly go to MainActivity for Google login
+                startActivity(MainActivity.class);
+            }
+        });
     }
 
-    public void onHomeClick(User user) {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("UserID", user.getId());
-        editor.apply();
-        startActivity(intent);
-        finish();
+    private void loginUser() {
+        String email = emailEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        for (User user : userList) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                // Successful login
+                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                // Redirect to MainActivity
+                startActivity(MainActivity.class);
+                return;
+            }
+        }
+
+        // Invalid credentials
+        Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
     }
 
-    public void onRegisterClick() {
-        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    public void getUserByEmail(String email, String password, ArrayList<User> userArrayList){
-
-        db.collection("users")
-                .whereEqualTo("email", email)
-                .whereEqualTo("password", password)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if(task.getResult().isEmpty()){
-                                Toast.makeText(LoginActivity.this, "Email or password is incorrect!", Toast.LENGTH_SHORT).show();
-                               return;
-                            }
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                User user = document.toObject(User.class);
-                                user.setId(document.getId());
-                                Log.e("Document", user.getId());
-                                userArrayList.add(user);
-                            }
-                            User user = userArrayList.get(0);
-                            Log.e("User to home", user.getFirstName());
-                            onHomeClick(user);
-                            Toast.makeText(LoginActivity.this, "You're logged in!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e("Oko", "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+    private void startActivity(Class<?> cls) {
+        startActivity(new Intent(LoginActivity.this, cls));
     }
 }
