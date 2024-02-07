@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "871636746754",
+    "project_id": "oko-glasses",
+    "storage_bucket": "oko-glasses.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871636746754:android:92dfa6564b2ea517149d1b",
+        "android_client_info": {
+          "package_name": "com.example.oko"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbnmvaPvOqrw7jM7Xv060Dr0uz-9398V4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,7 +11,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.skinmates.model.User;
+import com.example.oko.model.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.e("Skinmates", "DocumentSnapshot added with ID: " + documentReference.getId());
+                        Log.e("Oko", "DocumentSnapshot added with ID: " + documentReference.getId());
                         String id = documentReference.getId();
                         user.setId(id);
                         SharedPreferences sharedPreferences = getSharedPreferences("User", MODE_PRIVATE);
