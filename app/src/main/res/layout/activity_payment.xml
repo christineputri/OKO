@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/paymentbg">
+
+    <Button
+        android:id="@+id/pay"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="345dp"
+        android:layout_height="53dp"
+        android:background="@drawable/form_field"
+        android:backgroundTint="@color/red_300"
+        android:fontFamily="@font/latobold"
+        android:text="Pay  Now"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        app:backgroundTint="@color/purple_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.858" />
+
+    <TextView
+        android:id="@+id/payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <TextView
+        android:id="@+id/cardholder_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cardholder's Name"
+        android:textColor="@color/gray_501"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.146"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.165" />
+
+    <Button
+        android:id="@+id/back_from_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/cardholder_name"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:background="@drawable/form_field"
+        android:fontFamily="@font/lato"
+        android:gravity="center_vertical"
+        android:hint="Cardholder's Name"
+        android:inputType="textPersonName"
+        android:paddingHorizontal="15dp"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.223" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/card_number"
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:background="@drawable/form_field"
+        android:fontFamily="@font/lato"
+        android:gravity="center_vertical"
+        android:hint="Card Number"
+        android:inputType="textPersonName"
+        android:paddingHorizontal="15dp"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/cvv"
+        android:layout_width="186dp"
+        android:layout_height="50dp"
+        android:background="@drawable/form_field"
+        android:fontFamily="@font/lato"
+        android:gravity="center_vertical"
+        android:hint="CVV"
+        android:inputType="textPersonName"
+        android:paddingHorizontal="15dp"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.546" />
+
+    <TextView
+        android:id="@+id/card_number_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card Number"
+        android:textColor="@color/gray_501"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32" />
+
+    <TextView
+        android:id="@+id/cvv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CVV"
+        android:textColor="@color/gray_501"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.477" />
+
+    <CheckBox
+        android:id="@+id/remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember bank card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.664" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
