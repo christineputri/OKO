@@ -1,9 +1,9 @@
 plugins {
     id("com.android.application")
-//    id("com.google.gms.google-services") version "4.4.0" apply false
     id("com.google.gms.google-services")
     id("org.jetbrains.kotlin.android")
 }
+
 
 android {
     namespace = "com.example.oko"
@@ -31,20 +31,25 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    packaging {
+
+    packagingOptions {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -52,7 +57,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -68,9 +72,9 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
     implementation("com.google.firebase:firebase-analytics")
 
-    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation ("com.squareup.picasso:picasso:2.8")
-    implementation ("com.android.volley:volley:1.2.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.squareup.picasso:picasso:2.8")
+    implementation("com.android.volley:volley:1.2.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
