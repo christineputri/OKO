@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FaceRecognitionActivity"
-    android:background="@color/red_100"
+    android:background="@color/white"
     android:padding="40dp">
 
     <androidx.core.widget.NestedScrollView
