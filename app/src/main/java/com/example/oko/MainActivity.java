@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.profileBtn.setOnClickListener(view -> {
             tts.speak("Opening My Profile Page", TextToSpeech.QUEUE_FLUSH, null);
-//            startActivity(new Intent(this, ProfileA));
+            startActivity(new Intent(this, ProfileActivity.class));
         });
 
         binding.subBtn.setOnClickListener(view -> {

@@ -25,6 +25,12 @@
             android:name=".FaceRecognitionActivity"
             android:exported="false" />
         <activity
+            android:name=".SubscriptionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".SuccessActivity"
             android:exported="false"
             android:label="@string/title_activity_success"
