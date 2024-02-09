@@ -4,92 +4,82 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.oko.model.User;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText firstNameEditText, lastNameEditText, emailEditText, passwordEditText, confirmPasswordEditText;
-    private Button registerButton, continueWithGoogleButton, loginButton;
-
-    // ArrayList to store user data
-    private List<User> userList = new ArrayList<>();
+    private TextInputEditText firstNameField, lastNameField, emailField, passwordField, confirmPasswordField;
+    private Button registerButton, googleButton, loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        firstNameEditText = findViewById(R.id.ETFirstName);
-        lastNameEditText = findViewById(R.id.ETLastName);
-        emailEditText = findViewById(R.id.emailFormField);
-        passwordEditText = findViewById(R.id.passwordFormField);
-        confirmPasswordEditText = findViewById(R.id.ConfirmPasswordFormField);
+        firstNameField = findViewById(R.id.ETFirstName);
+        lastNameField = findViewById(R.id.ETLastName);
+        emailField = findViewById(R.id.emailFormField);
+        passwordField = findViewById(R.id.passwordFormField);
+        confirmPasswordField = findViewById(R.id.ConfirmPasswordFormField);
         registerButton = findViewById(R.id.registerButton);
-        continueWithGoogleButton = findViewById(R.id.buttonGoogle);
+        googleButton = findViewById(R.id.buttonGoogle);
         loginButton = findViewById(R.id.loginButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 registerUser();
             }
         });
 
-        continueWithGoogleButton.setOnClickListener(new View.OnClickListener() {
+        googleButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Directly go to MainActivity for Google login
-                startActivity(MainActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, SubscriptionActivity.class);
+                startActivity(intent);
             }
         });
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Redirect to LoginActivity
-                startActivity(LoginActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
 
     private void registerUser() {
-        String firstName = firstNameEditText.getText().toString();
-        String lastName = lastNameEditText.getText().toString();
-        String email = emailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
-        String confirmPassword = confirmPasswordEditText.getText().toString();
+        String firstName = firstNameField.getText().toString().trim();
+        String lastName = lastNameField.getText().toString().trim();
+        String email = emailField.getText().toString().trim();
+        String password = passwordField.getText().toString().trim();
+        String confirmPassword = confirmPasswordField.getText().toString().trim();
+
+        if (firstName.length() < 3 || lastName.length() < 3) {
+            Toast.makeText(RegisterActivity.this, "First name and last name must be at least 3 characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!email.endsWith("@gmail.com")) {
+            Toast.makeText(RegisterActivity.this, "Please enter a valid Gmail address", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (password.length() < 5) {
+            Toast.makeText(RegisterActivity.this, "Password must be at least 5 characters", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (!password.equals(confirmPassword)) {
-            // Passwords do not match, show error message
             Toast.makeText(RegisterActivity.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Check if the email is already registered
-        for (User user : userList) {
-            if (user.getEmail().equals(email)) {
-                // Email already exists, show error message
-                Toast.makeText(RegisterActivity.this, "Email is already registered", Toast.LENGTH_SHORT).show();
-                return;
-            }
-        }
-
-        // Add the new user to the list
-        userList.add(new User(firstName, lastName, email, password));
-
-        // Display success message
-        Toast.makeText(RegisterActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-
-        // Redirect to MainActivity after registration
-        startActivity(MainActivity.class);
+        Intent intent = new Intent(RegisterActivity.this, SubscriptionActivity.class);
+        startActivity(intent);
     }
 
     private void startActivity(Class<?> cls) {
