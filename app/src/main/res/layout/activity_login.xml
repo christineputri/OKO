@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="top"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/logo"
@@ -21,8 +22,9 @@
         app:srcCompat="@drawable/logo_oko" />
 
     <LinearLayout
+        android:paddingTop="15dp"
         android:id="@+id/linearLayout"
-        android:layout_width="405dp"
+        android:layout_width="match_parent"
         android:layout_height="556dp"
         android:background="@drawable/bottom_mounted"
         android:orientation="vertical"
@@ -90,9 +92,8 @@
 
         <TextView
             android:id="@+id/textOr"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/latobold"
             android:gravity="center"

@@ -1,5 +1,6 @@
 package com.example.oko;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
@@ -16,5 +17,19 @@ public class SubscriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySubscriptionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.standartPlan.setOnClickListener(view -> {
+            startActivity();
+        });
+
+        binding.basicPlan.setOnClickListener(view -> {
+            startActivity();
+        });
+
+        binding.proPlan.setOnClickListener(view -> {
+            startActivity();
+        });
     }
+
+    void startActivity(){startActivity(new Intent(SubscriptionActivity.this, PaymentActivity.class));}
 }
