@@ -3,6 +3,7 @@ package com.example.oko;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.oko.model.User;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +22,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
     TextToSpeech tts;
-    private EditText emailEditText, passwordEditText;
-    private Button loginButton, registerButton, continueWithGoogleButton;
+    private TextInputEditText emailFormField, passwordFormField;
+    private Button loginButton, buttonGoogle, registerPageButton;
 
-    // ArrayList to store email and password pairs
     private List<User> userList = new ArrayList<>();
 
     @Override
@@ -31,32 +32,33 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        emailEditText = findViewById(R.id.emailFormField);
-        passwordEditText = findViewById(R.id.passwordFormField);
+        emailFormField = findViewById(R.id.emailFormField);
+        passwordFormField = findViewById(R.id.passwordFormField);
         loginButton = findViewById(R.id.loginButton);
-        registerButton = findViewById(R.id.registerPageButton);
-        continueWithGoogleButton = findViewById(R.id.buttonGoogle);
+        buttonGoogle = findViewById(R.id.buttonGoogle);
+        registerPageButton = findViewById(R.id.registerPageButton);
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 loginUser();
             }
         });
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        buttonGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Redirect to RegisterActivity
-                startActivity(RegisterActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SubscriptionActivity.class);
+                startActivity(intent);
             }
         });
 
-        continueWithGoogleButton.setOnClickListener(new View.OnClickListener() {
+        registerPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Directly go to SubscriptionActivity for Google login
-                startActivity(SubscriptionActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -64,23 +66,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser() {
-        String email = emailEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
+        String email = emailFormField.getText().toString().trim();
+        String password = passwordFormField.getText().toString().trim();
 
-        for (User user : userList) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                // Successful login
-                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                // Redirect to SubscriptionActivity
-                startActivity(SubscriptionActivity.class);
-                return;
-            }
+        // Check if email and password are not empty
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            Toast.makeText(LoginActivity.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        // Invalid credentials
-        Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
-    }
+        // Check if email is a Gmail address
+        if (!email.endsWith("@gmail.com")) {
+            Toast.makeText(LoginActivity.this, "Please enter a valid Gmail address", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        Intent intent = new Intent(LoginActivity.this, SubscriptionActivity.class);
+        startActivity(intent);
+    }
 
     private void ttsListener(){
          tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
