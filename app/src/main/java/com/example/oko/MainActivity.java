@@ -132,7 +132,38 @@ public class MainActivity extends AppCompatActivity {
         ttsListener();
 //        camViewfinder();
         checkPermission();
+        clickListener();
 
+    }
+
+    private void clickListener(){
+        binding.objDetect.setOnClickListener(view -> {
+            tts.speak("Say, what's in fron of me", TextToSpeech.QUEUE_FLUSH, null);
+        });
+        binding.tts.setOnClickListener(view -> {
+            tts.speak("Say, read it for me", TextToSpeech.QUEUE_FLUSH, null);
+        });
+        binding.facialRecog.setOnClickListener(view -> {
+            tts.speak("Say, who's in front of me", TextToSpeech.QUEUE_FLUSH, null);
+        });
+        binding.gestureRecog.setOnClickListener(view -> {
+            tts.speak("gesture and hand sign recognition coming soon", TextToSpeech.QUEUE_FLUSH, null);
+        });
+
+        binding.profileBtn.setOnClickListener(view -> {
+            tts.speak("Opening My Profile Page", TextToSpeech.QUEUE_FLUSH, null);
+//            startActivity(new Intent(this, ProfileA));
+        });
+
+        binding.subBtn.setOnClickListener(view -> {
+            tts.speak("Opening Subscription Page", TextToSpeech.QUEUE_FLUSH, null);
+//            startActivity(new Intent(this, ));
+        });
+
+        binding.connectedDeviceBtn.setOnClickListener(view -> {
+            tts.speak("Opening connected glasses Page", TextToSpeech.QUEUE_FLUSH, null);
+//            startActivity(new Intent(this, ));
+        });
     }
 
     private void gemini(Uri imag) {
