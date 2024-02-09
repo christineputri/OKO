@@ -10,14 +10,23 @@
     android:padding="40dp"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/captImg"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="40dp" />
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="16dp"
         android:paddingTop="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ScrollViewCount">
 
         <LinearLayout
@@ -37,9 +46,9 @@
 
 
             <androidx.cardview.widget.CardView
-                android:layout_marginVertical="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="25dp"
                 app:cardCornerRadius="14dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,48 +70,48 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:textColor="@color/white"
-                android:backgroundTint="@color/red_700"
                 android:id="@+id/getSpeechBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/red_700"
+                android:paddingVertical="20dp"
                 android:text="Speak"
-                android:paddingVertical="20dp"/>
+                android:textColor="@color/white" />
 
 
             <LinearLayout
-                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
                     android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:layout_gravity="center">
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_emoji_objects_24"
-                            android:layout_marginBottom="15dp"/>
+                            android:layout_marginBottom="15dp"
+                            android:src="@drawable/baseline_emoji_objects_24" />
 
                         <TextView
-                            android:padding="5dp"
-                            android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Object Detection"/>
+                            android:padding="5dp"
+                            android:text="Object Detection"
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -111,30 +120,30 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
+                    android:layout_weight="1"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:layout_gravity="center">
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_emoji_objects_24"
-                            android:layout_marginBottom="15dp"/>
+                            android:layout_marginBottom="15dp"
+                            android:src="@drawable/baseline_emoji_objects_24" />
 
                         <TextView
-                            android:padding="5dp"
-                            android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Text to Speach"/>
+                            android:padding="5dp"
+                            android:text="Text to Speach"
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -144,38 +153,38 @@
 
 
             <LinearLayout
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
                     android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:layout_gravity="center">
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_emoji_objects_24"
-                            android:layout_marginBottom="15dp"/>
+                            android:layout_marginBottom="15dp"
+                            android:src="@drawable/baseline_emoji_objects_24" />
 
                         <TextView
-                            android:padding="5dp"
-                            android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Facial Recognition"/>
+                            android:padding="5dp"
+                            android:text="Facial Recognition"
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -184,30 +193,30 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
+                    android:layout_weight="1"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:layout_gravity="center"
                         android:gravity="center"
-                        android:layout_gravity="center">
+                        android:orientation="vertical">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/baseline_emoji_objects_24"
-                            android:layout_marginBottom="15dp"/>
+                            android:layout_marginBottom="15dp"
+                            android:src="@drawable/baseline_emoji_objects_24" />
 
                         <TextView
-                            android:padding="5dp"
-                            android:textAlignment="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Gesture &amp; Hand Sign Recognition"/>
+                            android:padding="5dp"
+                            android:text="Gesture &amp; Hand Sign Recognition"
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
