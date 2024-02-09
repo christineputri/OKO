@@ -43,6 +43,7 @@ android {
 
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 
     composeOptions {
@@ -79,4 +80,25 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+//    cameraX
+    implementation ("androidx.camera:camera-core:1.3.1")
+    implementation ("androidx.camera:camera-camera2:1.3.1")
+    implementation ("androidx.camera:camera-lifecycle:1.3.1")
+    implementation ("androidx.camera:camera-video:1.3.1")
+    implementation ("androidx.camera:camera-view:1.3.1")
+    implementation ("androidx.camera:camera-extensions:1.3.1")
+
+
+    //ML Kit (To detect faces)
+    implementation ("com.google.mlkit:face-detection:16.1.5")
+    implementation ("com.google.android.gms:play-services-mlkit-face-detection:17.0.1")
+
+    //GSON (Conversion of String to Map & Vice-Versa)
+    implementation ("com.google.code.gson:gson:2.8.9")
+
+    //TensorFlow Lite libraries (To recognize faces)
+    implementation ("org.tensorflow:tensorflow-lite-task-vision:0.3.0")
+    implementation ("org.tensorflow:tensorflow-lite-support:0.3.0")
+    implementation ("org.tensorflow:tensorflow-lite:0.0.0-nightly-SNAPSHOT")
 }
