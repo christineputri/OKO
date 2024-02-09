@@ -86,6 +86,8 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    app:cardBackgroundColor="@color/white"
+                    android:id="@+id/objDetect"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginEnd="5dp"
@@ -107,6 +109,8 @@
                             android:src="@drawable/baseline_emoji_objects_24" />
 
                         <TextView
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
@@ -118,6 +122,8 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    app:cardBackgroundColor="@color/white"
+                    android:id="@+id/tts"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginStart="5dp"
@@ -136,9 +142,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="15dp"
-                            android:src="@drawable/baseline_emoji_objects_24" />
+                            android:src="@drawable/tts_icon" />
 
                         <TextView
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
@@ -159,6 +167,8 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    app:cardBackgroundColor="@color/white"
+                    android:id="@+id/facialRecog"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginEnd="5dp"
@@ -177,9 +187,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="15dp"
-                            android:src="@drawable/baseline_emoji_objects_24" />
+                            android:src="@drawable/face_icon" />
 
                         <TextView
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
@@ -191,6 +203,8 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    app:cardBackgroundColor="@color/white"
+                    android:id="@+id/gestureRecog"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginStart="5dp"
@@ -209,9 +223,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="15dp"
-                            android:src="@drawable/baseline_emoji_objects_24" />
+                            android:src="@drawable/gesture_icon" />
 
                         <TextView
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
@@ -223,6 +239,111 @@
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@color/white"
+                android:id="@+id/profileBtn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/profile_icon" />
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="My Profile"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@color/white"
+                android:id="@+id/subBtn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/sub_icon" />
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Subscription"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@color/white"
+                android:id="@+id/connectedDeviceBtn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="25dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginBottom="15dp"
+                        android:src="@drawable/glasses_icon" />
+
+                    <TextView
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Connected Glasses"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
