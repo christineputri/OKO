@@ -25,6 +25,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         Button payNowButton = findViewById(R.id.pay);
         final CheckBox rememberCheckbox = findViewById(R.id.remember);
+        Button backButton = findViewById(R.id.back_from_payment); // New button for back action
 
         // Retrieve stored card details and pre-fill the fields
         if (rememberCheckbox.isChecked()) {
@@ -64,7 +65,15 @@ public class PaymentActivity extends AppCompatActivity {
                 }
             }
         });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Back button action, intent to SubscriptionActivity
+                Intent intent = new Intent(PaymentActivity.this, SubscriptionActivity.class);
+                startActivity(intent);
+                finish(); // Optional, to close the current activity if needed
+            }
+        });
     }
 }
-
-
