@@ -2,6 +2,7 @@ package com.example.oko;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,9 +14,12 @@ import com.example.oko.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+    TextToSpeech tts;
     private EditText emailEditText, passwordEditText;
     private Button loginButton, registerButton, continueWithGoogleButton;
 
@@ -55,6 +59,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(SubscriptionActivity.class);
             }
         });
+
+        ttsListener();
     }
 
     private void loginUser() {
@@ -73,6 +79,40 @@ public class LoginActivity extends AppCompatActivity {
 
         // Invalid credentials
         Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void ttsListener(){
+         tts = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int i) {
+                if (i != TextToSpeech.ERROR){
+                    tts.setLanguage(Locale.ENGLISH);
+                }
+            }
+        });
+
+        String hello = "Hello, welcome to OKkO. You're currently on Login Page. if you're unable to fill the form, please ask someone to help you";
+
+//        tts.speak(hello, TextToSpeech.QUEUE_ADD, null);
+
+        Thread timer = new Thread() {
+            public void run() {
+                try {
+                    try {
+                        sleep(1000);
+
+                        tts.speak(hello, TextToSpeech.QUEUE_ADD, null);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                } catch (NullPointerException e){}
+
+            }
+
+        };
+        timer.start();
     }
 
     private void startActivity(Class<?> cls) {
