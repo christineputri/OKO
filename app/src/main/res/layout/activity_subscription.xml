@@ -22,8 +22,8 @@
 
     <Button
         android:id="@+id/pro_plan"
-        android:layout_width="69dp"
-        android:layout_height="43dp"
+        android:layout_width="67dp"
+        android:layout_height="42dp"
         android:text="buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,8 +46,8 @@
 
     <Button
         android:id="@+id/basic_plan"
-        android:layout_width="74dp"
-        android:layout_height="40dp"
+        android:layout_width="67dp"
+        android:layout_height="42dp"
         android:text="buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
