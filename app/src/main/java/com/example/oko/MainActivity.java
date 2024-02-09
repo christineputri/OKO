@@ -157,11 +157,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.subBtn.setOnClickListener(view -> {
             tts.speak("Opening Subscription Page", TextToSpeech.QUEUE_FLUSH, null);
-//            startActivity(new Intent(this, ));
+            startActivity(new Intent(this, SubscriptionActivity.class));
         });
 
         binding.connectedDeviceBtn.setOnClickListener(view -> {
-            tts.speak("Opening connected glasses Page", TextToSpeech.QUEUE_FLUSH, null);
+            tts.speak("Connected glasses currently only accessible by developer", TextToSpeech.QUEUE_FLUSH, null);
 //            startActivity(new Intent(this, ));
         });
     }
